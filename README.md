@@ -89,9 +89,7 @@ json – Structured data, ideal for programmatic processing.
 🧪 Validation
 We validated Atomic-SCS on 100 normal molecules (covering diverse chemical classes) and 100 problematic molecules (containing valence errors, extreme charges, ring strain, invalid SMILES, etc.). The normal group scores are tightly centered at 0 (with a few small‑ring outliers receiving minor ring‑strain penalties), while the problematic group shows a wide distribution. A Mann‑Whitney U test yields p < 1e-18, demonstrating excellent discriminative power.
 
-https://boxplot.png
-
-Note: The boxplot above is an example; you can generate it using the provided validation scripts.
+Note: You can generate the boxplot by running python plot_from_tsv.py after scoring your validation sets.
 
 📖 Citation
 If you use Atomic-SCS in your research, please cite:
