@@ -1,25 +1,22 @@
-# Atomic-SCS: Atomic‑level Chemical Rule Scoring
+# Atomic-SCS: Atomic‑level Chemical Rule Scoring for Generative Molecular Design
 
-**Atomic-SCS** is an open‑source Python tool for atomic‑level chemical rule evaluation. It assesses each atom in a molecule across multiple dimensions (valence, charge, aromaticity, ring strain, ring count) and returns a continuous compliance score (0 = fully compliant, 1 = severe violation). The tool provides three strictness levels, three output modes (assess, diagnose, repair), and supports multiple output formats (text/TSV, CSV, JSON). Its continuous scores are differentiable, making it suitable as a constraint or reward signal in generative molecular design pipelines.
-
----
+Atomic-SCS is an open‑source Python tool that evaluates the chemical validity of molecules at the atom level. It scores each atom across four dimensions (valence, charge, aromaticity, ring strain) and returns a continuous compliance score (0 = fully compliant, 1 = severe violation). The tool supports three strictness levels (conservative, balanced, liberal) and three operation modes (assess, diagnose, repair). Output can be generated as text (TSV), CSV, or JSON. The continuous scores are differentiable, making Atomic-SCS suitable as a constraint or reward signal in generative molecular design pipelines.
 
 ## ✨ Features
 
-- **Atom‑level multi‑dimensional scoring**  
-  Valence (quadratic penalty), charge (distance penalty), aromaticity, ring strain (3‑/4‑membered rings), ring count.
+- **Four scoring dimensions**  
+  Valence (quadratic penalty), charge (distance penalty), aromaticity (RDKit flags), ring strain (only 3‑ and 4‑membered rings).
 - **Three strictness modes**  
-  `conservative`, `balanced`, `liberal` – adjust compliance thresholds and hypervalence tolerance.
+  `conservative`, `balanced`, `liberal` – adjust compliance thresholds and hypervalence tolerance for S and P.
 - **Three operation modes**  
-  - `assess` – summary of molecular score, compliance, confidence level.  
-  - `diagnose` – detailed per‑atom scores and issues.  
-  - `repair` – prioritized fix suggestions.
-- **Multiple output formats**  
-  `text` (default TSV), `csv`, `json` (including detailed per‑atom verbose output).
-- **Command‑line interface** and **Python API**.
-- **Comprehensive validation** – 100 normal vs. 100 problematic molecules, Mann‑Whitney U test p < 1e-18.
-
----
+  - `assess` – molecular score, compliance status, confidence level.  
+  - `diagnose` – per‑atom scores and issue descriptions.  
+  - `repair` – prioritized text suggestions (no automatic structure modification).
+- **Output formats**  
+  text (default TSV), `csv`, `json` (including verbose per‑atom output).
+- **Command‑line interface and Python API**.
+- **Validation**  
+  Tested on 100 normal molecules and 100 problematic molecules; Mann‑Whitney U test gives p < 1e‑18, demonstrating excellent discriminative power.
 
 ## 🔧 Installation
 
@@ -87,16 +84,13 @@ csv – Comma‑separated, suitable for spreadsheets.
 json – Structured data, ideal for programmatic processing.
 
 🧪 Validation
-We validated Atomic-SCS on 100 normal molecules (covering diverse chemical classes) and 100 problematic molecules (containing valence errors, extreme charges, ring strain, invalid SMILES, etc.). The normal group scores are tightly centered at 0 (with a few small‑ring outliers receiving minor ring‑strain penalties), while the problematic group shows a wide distribution. A Mann‑Whitney U test yields p < 1e-18, demonstrating excellent discriminative power.
-
-Note: You can generate the boxplot by running python plot_from_tsv.py after scoring your validation sets.
+We validated Atomic-SCS on 100 normal molecules (covering diverse chemical classes) and 100 problematic molecules (containing valence errors, extreme charges, ring strain, invalid SMILES, etc.). The normal group scores are tightly centered at 0 (with small‑ring outliers receiving minor ring‑strain penalties), while the problematic group shows a wide distribution. A Mann‑Whitney U test yields p < 1e‑18, demonstrating excellent discriminative power.
 
 📖 Citation
-If you use Atomic-SCS in your research, please cite:
+If you use Atomic-SCS in your research, please cite the preprint:
 
-text
-Author(s). (2026). Atomic-SCS: Atomic‑level Differentiable Chemical Rule Scoring for Molecular Design.
-Journal / preprint, DOI: ... (to be added).
+Hejing Huo, Miaomiao Niu. Atomic-SCS: An Atom‑Level Chemical Rule Scoring Tool for Generative Molecular Design. Preprints.org 2026, 202604.0809.v1. DOI: 10.20944/preprints202604.0809.v1
+
 🤝 Contributing
 Issues and pull requests are welcome. Please open an issue for discussion before major changes.
 
