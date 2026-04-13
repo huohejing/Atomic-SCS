@@ -79,6 +79,7 @@ repairs = scs.repair_molecule("C1CC1")
 print(repairs)
 📚 Usage
 Command‑line arguments
+
 input_file : SMILES file (one per line)
 
 --mode, -m : assess, diagnose, repair (default: assess) – Operation mode
@@ -92,6 +93,7 @@ input_file : SMILES file (one per line)
 --output, -o : Output file (default: stdout)
 
 Output formats
+
 text (TSV) – Tab‑separated values, easy to view or import.
 
 csv – Comma‑separated, suitable for spreadsheets.
