@@ -4,26 +4,29 @@ Atomic-SCS is an open‑source Python tool that evaluates the chemical validity 
 
 ## ✨ Features
 
-- **Four scoring dimensions**  
-  - Valence (quadratic penalty)  
-  - Charge (distance penalty)  
-  - Aromaticity (RDKit flags)  
-  - Ring strain (only 3‑ and 4‑membered rings)
+**Four scoring dimensions**
 
-- **Three strictness modes**  
-  `conservative`, `balanced`, `liberal` – adjust compliance thresholds and hypervalence tolerance for S and P.
+- Valence (quadratic penalty)
+- Charge (distance penalty)
+- Aromaticity (RDKit flags)
+- Ring strain (only 3‑ and 4‑membered rings)
 
-- **Three operation modes**  
-  - `assess` – molecular score, compliance status, confidence level.  
-  - `diagnose` – per‑atom scores and issue descriptions.  
-  - `repair` – prioritized text suggestions (no automatic structure modification).
+**Three strictness modes**  
+`conservative`, `balanced`, `liberal` – adjust compliance thresholds and hypervalence tolerance for S and P.
 
-- **Output formats**  
-  - text (default TSV)  
-  - csv  
-  - json (including verbose per‑atom output)
+**Three operation modes**
 
-- **Command‑line interface and Python API**
+- `assess` – molecular score, compliance status, confidence level.
+- `diagnose` – per‑atom scores and issue descriptions.
+- `repair` – prioritized text suggestions (no automatic structure modification).
+
+**Output formats**
+
+- text (default TSV)
+- csv
+- json (including verbose per‑atom output)
+
+**Command‑line interface and Python API**
 
 ## 🔧 Installation
 
@@ -76,7 +79,6 @@ repairs = scs.repair_molecule("C1CC1")
 print(repairs)
 📚 Usage
 Command‑line arguments
-
 input_file : SMILES file (one per line)
 
 --mode, -m : assess, diagnose, repair (default: assess) – Operation mode
@@ -90,7 +92,6 @@ input_file : SMILES file (one per line)
 --output, -o : Output file (default: stdout)
 
 Output formats
-
 text (TSV) – Tab‑separated values, easy to view or import.
 
 csv – Comma‑separated, suitable for spreadsheets.
