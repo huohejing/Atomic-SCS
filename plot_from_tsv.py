@@ -18,21 +18,20 @@ def extract_scores(tsv_file):
                 try:
                     scores.append(float(parts[1]))
                 except ValueError:
-                    # 如果转换失败（比如 "ERROR" 字符串），当作 1.0
                     scores.append(1.0)
     return scores
 
 # 提取分数
 normal_scores = extract_scores("normal_raw.tsv")
-abnormal_scores = extract_scores("abnormal_raw.tsv")
+problematic_scores = extract_scores("abnormal_raw.tsv")   # 如果你的文件已改名为 problematic_raw.tsv，这里也改
 
 print(f"正常分子数量: {len(normal_scores)}")
-print(f"问题分子数量: {len(abnormal_scores)}")
+print(f"问题分子数量: {len(problematic_scores)}")
 
 # 构建 DataFrame
 df_normal = pd.DataFrame({'Score': normal_scores, 'Group': 'Normal'})
-df_abnormal = pd.DataFrame({'Score': abnormal_scores, 'Group': 'Abnormal'})
-data = pd.concat([df_normal, df_abnormal], ignore_index=True)
+df_problematic = pd.DataFrame({'Score': problematic_scores, 'Group': 'Problematic'})
+data = pd.concat([df_normal, df_problematic], ignore_index=True)
 
 # 绘制箱线图
 plt.figure(figsize=(6, 8))
@@ -47,5 +46,5 @@ plt.savefig('boxplot.pdf')
 print("箱线图已保存为 boxplot.png 和 boxplot.pdf")
 
 # 统计检验（正常组分数是否显著低于异常组）
-u_stat, p_value = mannwhitneyu(normal_scores, abnormal_scores, alternative='less')
+u_stat, p_value = mannwhitneyu(normal_scores, problematic_scores, alternative='less')
 print(f"Mann-Whitney U 检验: U = {u_stat:.2f}, p = {p_value:.2e}")

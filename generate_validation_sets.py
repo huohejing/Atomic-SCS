@@ -2,10 +2,15 @@
 """
 Generate comprehensive validation sets:
 - normal_100.smi: 100 molecules that are chemically valid (including small rings with strain)
-- abnormal_100.smi: 100 molecules with various violations and edge cases
+- problematic_100.smi: 100 molecules with various violations and edge cases
+
+Note: A fixed random seed is used to ensure reproducibility.
 """
 
 import random
+
+# Set fixed random seed for reproducible dataset generation
+random.seed(20260416)
 
 def generate_normal_molecules(n=100):
     """Normal molecules: chemically valid, may include small rings (cyclopropane, cyclobutane, etc.)"""
@@ -59,7 +64,7 @@ def generate_normal_molecules(n=100):
         base.append("C" * (len(base) % 10 + 1))
     return base[:n]
 
-def generate_abnormal_molecules(n=100):
+def generate_problematic_molecules(n=100):
     """Problematic molecules: valence issues, extreme charges, invalid SMILES, etc."""
     problematic = []
 
@@ -145,12 +150,12 @@ def write_smiles(smiles_list, filename):
 
 def main():
     normal = generate_normal_molecules(100)
-    abnormal = generate_abnormal_molecules(100)
+    problematic = generate_problematic_molecules(100)
     write_smiles(normal, "normal_100.smi")
-    write_smiles(abnormal, "abnormal_100.smi")
-    print(f"Generated {len(normal)} normal and {len(abnormal)} abnormal SMILES.")
+    write_smiles(problematic, "problematic_100.smi")
+    print(f"Generated {len(normal)} normal and {len(problematic)} problematic SMILES.")
     print("Normal first 5:", normal[:5])
-    print("Abnormal first 5:", abnormal[:5])
+    print("Problematic first 5:", problematic[:5])
 
 if __name__ == "__main__":
     main()
