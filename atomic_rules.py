@@ -91,8 +91,8 @@ def check_charge_detailed(atom, strictness='balanced'):
         'N': [-2, -1, 0, 1, 2],  # Various nitrogen oxidation states
         'O': [-1, 0, 1],      # Oxide, neutral, oxonium
         'F': [-1],            # Fluoride only
-        'P': [-3, -2, -1, 0, 1, 2, 3, 4, 5],  # Phosphorus has many states
-        'S': [-2, -1, 0, 1, 2, 4, 6],  # Sulfur oxidation states
+        'P': [-2, -1, 0, 1, 2, 3, 4, 5],  # Phosphorus has many states
+        'S': [-2, -1, 0, 1, 2],  # Sulfur oxidation states
         'Cl': [-1, 0, 1],     # Chlorine oxidation states
         'Br': [-1, 0, 1],     # Bromine oxidation states
         'I': [-1, 0, 1, 3, 5, 7]  # Iodine oxidation states
