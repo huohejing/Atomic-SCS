@@ -1,7 +1,6 @@
 # Atomic-SCS: Atomic‑level Chemical Rule Scoring for Generative Molecular Design
 
 > **📢 Publication Status**  
-> This work is currently under review as an **Application Note** at the *Journal of Chemical Information and Modeling (JCIM)*.  
 > Preprint available at: https://doi.org/10.20944/preprints202604.0809.v1
 
 Atomic-SCS is an open‑source Python tool that evaluates the chemical validity of molecules at the atom level. It scores each atom across four dimensions (valence, charge, aromaticity, ring strain) and returns a continuous compliance score (0 = fully compliant, 1 = severe violation). The tool supports three strictness levels (conservative, balanced, liberal) and three operation modes (assess, diagnose, repair). Output can be generated as text (TSV), CSV, or JSON. The continuous scores can serve as a reward signal in generative model training.
